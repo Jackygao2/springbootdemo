@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+<h2>Update User</h2>
+<form th:action="@{/update}" method="post">
+    <input type="hidden" th:field="${user.id}"/>
+    <div>
+        <label for="username">Username:</label>
+        <!--/*@thymesVar id="user" type=""*/-->
+        <input type="text" id="username" th:field="${user.username}" required/>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="${user.password}" required/>
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+</body>
+</html>
