@@ -5,6 +5,7 @@ import com.example.demo.common.ResultGenerator;
 import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,18 +48,20 @@ public class RestController {
         return ResultGenerator.genSuccessResult(users);
     }
 
+    @GetMapping("/addUser")
+    public String addUserForm(Model model) {
+        model.addAttribute("user", new User());
+        return "addUser";
+    }
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
-    @ResponseBody
-    public Result<Boolean> insert(@RequestBody User user) {
-        if (StringUtils.isEmpty(user.getName()) || StringUtils.isEmpty(user.getPassword())) {
-            return ResultGenerator.genFailResult("no parameter");
-        }
-        return ResultGenerator.genSuccessResult(userDao.insertUser(user) > 0);
+    @PostMapping("/addUser")
+    public String addUser(@ModelAttribute("user") User user) {
+        userDao.insertUser(user);
+        return "redirect:/ListAll";
     }
 
 
-    @RequestMapping(value = "/users", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     @ResponseBody
     public Result<Boolean> update(@RequestBody User tempUser) {
 
@@ -75,7 +78,7 @@ public class RestController {
     }
 
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public Result<Boolean> delete(@PathVariable("id") Integer id) {
         if (id == null || id < 1) {

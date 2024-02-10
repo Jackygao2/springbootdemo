@@ -12,7 +12,7 @@
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo</name>
-    <description>demo Mybatis</description>
+    <description>Spring boot 3 demo</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -34,7 +34,6 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>3.0.3</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.h2database</groupId>

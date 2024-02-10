@@ -22,9 +22,10 @@
     <select id="getUserByNameAndPassword" resultMap="UserResult">
         select id, name, password
         from tb_user
-        where username = #{id}
+        where username = #{name}
           and password = #{password}
     </select>
+
     <insert id="insertUser" parameterType="com.example.demo.entity.User">
         insert into tb_user(name, password)
         values (#{name}, #{password})

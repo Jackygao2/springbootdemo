@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>User Registration</title>
+    <style>
+        /* Add some basic CSS styling */
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            margin-left: 110px;
+        }
+    </style>
+</head>
+<body>
+<h2>User Registration</h2>
+<form th:action="@{/saveUser}" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"/>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"/>
+    </div>
+    <div>
+        <input type="submit" value="Register"/>
+    </div>
+</form>
+</body>
+</html>

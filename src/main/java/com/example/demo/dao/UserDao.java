@@ -7,44 +7,19 @@ import java.util.List;
 
 @Repository
 public interface UserDao {
-    /**
-     * 返回数据列表
-     *
-     * @return
-     */
+
     List<User> findAllUsers();
 
-    /**
-     * 根据主键查询
-     *
-     * @param id
-     * @return
-     */
+
     User getUserById(Integer id);
 
     User getUserByNameAndPassword(String name, String password);
 
-    /**
-     * 添加
-     *
-     * @param User
-     * @return
-     */
-    int insertUser(User User);
 
-    /**
-     * 修改
-     *
-     * @param User
-     * @return
-     */
-    int updUser(User User);
+    int insertUser(User user);
 
-    /**
-     * 删除
-     *
-     * @param id
-     * @return
-     */
+    int updUser(User user);
+
+
     int delUser(Integer id);
 }
